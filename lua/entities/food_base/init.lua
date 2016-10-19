@@ -39,6 +39,6 @@ function DrainFood()
 			v:SetNWInt('Food', tonumber('Food'), - 1)
 		end
 	end
-	timer.Simple(20 , DrainFood)
+	timer.Simple(6 , DrainFood)
 end
-timer.Simple(20 , DrainFood)
+timer.Simple(6 , DrainFood)
