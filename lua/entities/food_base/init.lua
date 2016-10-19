@@ -26,10 +26,21 @@ end
 
 function ENT:Use( activator )
 
-	local energy = activator:GetNWInt("Energy", 0)
-	activator:SetNWInt( "Energy", math.Clamp( (energy or 0) + 30, 0, 100 ) )
+	local energy = activator:GetNWInt("Food", 0)
+	activator:SetNWInt( "Food", math.Clamp( (energy or 0) + 30, 0, 100 ) )
 	
 	if foodmod.enablesound then
 		activator:EmitSound( self.foodSound, 50, 100 )
 	end
 end
+
+function DrainFood()
+	for k,v in pairs(player.GetAll()) do
+		if v:IsValid() and v:IsAlive() then
+			local food = v:GetNWInt('Food', 0)
+			v:SetNWInt('Food', tonumber('Food'), - 1)
+		end
+	end
+	timer.Simple(20 , DrainFood)
+end
+timer.Simple(20 , DrainFood)
