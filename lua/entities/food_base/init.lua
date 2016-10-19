@@ -29,9 +29,7 @@ function ENT:Use( activator )
 	local energy = activator:GetNWInt("Food", 0)
 	activator:SetNWInt( "Food", math.Clamp( (energy or 0) + 30, 0, 100 ) )
 	
-	if foodmod.enablesound then
-		activator:EmitSound( self.foodSound, 50, 100 )
-	end
+	activator:EmitSound( self.foodSound, 50, 100 )
 end
 
 function DrainFood()
