@@ -42,3 +42,10 @@ function DrainFood()
 	timer.Simple(6 , DrainFood)
 end
 timer.Simple(6 , DrainFood)
+
+function PlayerSetFoodOnSpawn(ply)
+	
+	ply:SetNWInt('Food' , 50)
+	
+end
+hook.Add('PlayerSpawn' , 'PlayerSetFoodOnSpawn', PlayerSetFoodOnSpawn)
